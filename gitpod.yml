@@ -1,0 +1,16 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - name: Install dependencies
+    init: |
+      pip install -r requirements.txt
+  - name: Start Source Cassandra Docker container
+    command: docker run --name source -p 9042:9042 -d cassandra:3.11
+  - name: Start Destination Cassandra Docker container
+    command: docker run --name dest -p 9043:9042 -d cassandra:3.11
+      
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 9042
+  - port: 9043
+  - port: 29042
