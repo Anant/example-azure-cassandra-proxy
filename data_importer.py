@@ -6,8 +6,7 @@ import time
 from cassandra import ConsistencyLevel
 import sys
 
-# cluster = Cluster([sys.argv[1]])
-cluster = Cluster([sys.argv[1]], port=29042)
+cluster = Cluster([sys.argv[1]], port=9042)
 session = cluster.connect()
 
 row = session.execute("select release_version from system.local").one()
