@@ -62,10 +62,7 @@ python data_importer.py $(hostname -I | awk '{print $2}') <keyspace_name> <table
 ```
 
 #### 4.2 Wait, why didn't that work?
-You may see an error such as the one below:
-```console
 
-```
 This is most likely due to TLS related issues; however, we can disable that using flags in the command.
 
 #### 4.3 Kill and restart Cassandra Proxy
