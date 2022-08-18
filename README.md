@@ -18,24 +18,30 @@ docker exec -it dest cqlsh
 ```
 
 ### 2. Run `data_importer.py` for dockerized Cassandra Source Container
-#### 2.1 Run the below command with your desired keyspace and table names after replacing the placeholders
+
+#### 2.1 Download data.json
+```bash
+curl -o data.json https://raw.githubusercontent.com/Anant/Cassandra.Api/master/Assets/data.json
+```
+
+#### 2.2 Run the below command with your desired keyspace and table names after replacing the placeholders
 ```bash
 python data_importer.py $(hostname -I | awk '{print $2}') <keyspace_name> <table_name>
 ```
 
-#### 2.2 Confirm your keyspace and table were created and data was loaded in Source Container CQLSH
+#### 2.3 Confirm your keyspace and table were created and data was loaded in Source Container CQLSH
 ```bash
 select count(*) from <keyspace_name>.<table_name>
 ```
 
 This should return 10
 
-#### 2.3 Drop the keyspace you just created
+#### 2.4 Drop the keyspace you just created
 ```bash
 drop keyspace <keyspace_name> ;
 ```
 
-#### 2.4 Confirm dest Cassandra container is still unchanged via CQLSH
+#### 2.5 Confirm dest Cassandra container is still unchanged via CQLSH
 ```bash
 describe keyspaces ;
 ```
